@@ -1,0 +1,9 @@
+node_modules
+lib
+build
+examples
+src.min.js.map
+bundle.js
+*.zip
+*.log
+.DS_Store
