@@ -1,0 +1,20 @@
+{
+  "name": "try-backbone-js",
+  "version": "1.0.0",
+  "description": "Hackin' around.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify public/js/main.js -o public/bundle.js"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
+    "underscore": "^1.8.3"
+  }
+}
