@@ -279,6 +279,9 @@ textarea {
     }
 }
 
+html {
+    background-color: #555;
+}
 
 .box {
     position: relative;
