@@ -32,7 +32,6 @@ app.get('/api/v1/colors', function getColors (req, res, next) {
 });
 
 app.post('/api/v1/colors', function getColors (req, res, next) {
-  console.log('post: /api/v1/colors: req.params.name: ' + JSON.stringify(req.body, null, 2));
   addColor(colors, req.body.color);
   res.type('json');
   res.send(colors);
