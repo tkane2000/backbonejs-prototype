@@ -281,6 +281,11 @@ textarea {
 
 html {
     background-color: #555;
+    color: #fff;
+}
+
+button, input {
+    color: #000;
 }
 
 .box {
@@ -301,6 +306,14 @@ html {
     margin: 20px auto;
 }
 
+header nav {
+    width: 400px;
+    margin: 20px auto;
+}
+
+header nav a {
+    color: #fff;
+}
 
 
 

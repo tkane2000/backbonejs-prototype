@@ -25,6 +25,7 @@ function getId () {
   return idCount++;
 }
 
+
 app.get('/api/v1/colors', function getColors (req, res, next) {
   console.log('get: /api/v1/colors');
   res.type('json');
@@ -37,7 +38,12 @@ app.post('/api/v1/colors', function getColors (req, res, next) {
   res.send(colors);
 });
 
+app.get('/*', function getColors (req, res, next) {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 app.listen(3003, function onServer () {
   console.log('serving on port 3003');
 });
+
 

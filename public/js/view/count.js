@@ -1,14 +1,14 @@
 var Backbone = require('backbone');
 
 module.exports = function init (count, colors) {
-  
-  return Backbone.View.extend({
+
+  var Count = Backbone.View.extend({
     
     colorsCollection: colors,
 
     countModel: count,
 
-    el: $('#incr-count'),
+    // el: $('#incr-count'),
 
     events: {
       'click': 'incrCount'
@@ -25,4 +25,7 @@ module.exports = function init (count, colors) {
     }
 
   });
+
+  return Count;
+
 };

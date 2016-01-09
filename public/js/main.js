@@ -1,31 +1,21 @@
 var Backbone = require('backbone');
+var $ = require('jquery');
 
-var Color = require('./model/color');
-var Colors = require('./model/colors');
+var SiteRouter = require('./routes/site-router');
 
-var Box = require('./view/box');
-var CountView = require('./view/count');
-var AddColorView = require('./view/add-color');
+var PrimaryNav = require('./view/primary-nav-view');
 
-// Model: ---------------------------------------------------------
 
-var colors = new Colors();
-// colors.add({color: '#ccc'});
-
-var count = new Backbone.Model({count: 0});
-
+// Router: --------------------------------------------------------
+var router = new SiteRouter();
 
 // Views: ---------------------------------------------------------
 
-Box = Box(count, colors); // init
-CountView = CountView(count, colors); // init
-AddColorView = AddColorView(colors); // init
+// TODO: use events so nav isn't tightly coupled to router?
+PrimaryNav = PrimaryNav(router);
+var nav = new PrimaryNav({el: '#primary-nav'});
 
-var box = new Box();
-var counter = new CountView();
-var addColor = new AddColorView();
-
-
-
-
+$(document).ready(function onDomReady () {
+    Backbone.history.start({pushState: true});
+});
 

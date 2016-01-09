@@ -1,10 +1,13 @@
 var Backbone = require('backbone');
+var CommonView = require('./common-view');
 
 module.exports = function init (colors) {
-  
-  return Backbone.View.extend({
 
-    el: '#add-color-form',
+  var AddColorView = CommonView.extend({
+
+    // el: '#add-color-form',
+
+    template: $('#color-form-tpl'),
 
     model: colors,
 
@@ -21,5 +24,7 @@ module.exports = function init (colors) {
       });
     }
   });
+  
+  return AddColorView;
 
 };
