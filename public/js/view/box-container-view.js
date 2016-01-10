@@ -20,13 +20,13 @@ var BoxContainerView = CommonView.extend({
 
     // init
     var BoxConstr = Box(count, colors);
-    var AddColorViewConstr = AddColorView(colors);
 
     var box = new BoxConstr({el: this.$el.find('#box-container')});
     this.addChild(box);
     box.render();
 
-    var addColor = new AddColorViewConstr(); // {el: '#add-color-form-container'}
+    var addColor = new AddColorView(colors); // {el: '#add-color-form-container'}
+
     this.addChild(addColor);
     this.$el.append(addColor.render().el);
   }
