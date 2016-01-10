@@ -7,6 +7,10 @@ var AddColorView = CommonView.extend({
 
   template: $('#color-form-tpl'),
 
+  events: {
+    'click #add-color-btn': 'addColor'
+  },
+
   constructor: function (collection) {
     this.colorsCollection = collection;
     CommonView.apply(this, arguments);
@@ -16,17 +20,15 @@ var AddColorView = CommonView.extend({
     if(!this.colorsCollection) throw new Error('You must set this.colorsCollection, a collection representing a list of color models.');
   },
 
-  events: {
-    'click #add-color-btn': 'addColor'
-  },
-
   addColor: function doAddColor (e) {
     e.preventDefault();
+    var input = this.$el.find('#color-input');
     this.colorsCollection.create({
-      color: '#' + this.$el.find('#color-input').val()
+      color: '#' + input.val()
     }, { 
       wait: true 
     });
+    input.val('');
   }
 });
   
