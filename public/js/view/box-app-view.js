@@ -6,9 +6,9 @@ var CommonView = require('./common-view');
 var Box = require('./box');
 var AddColorView = require('./add-color');
 
-var BoxContainerView = CommonView.extend({
+var BoxAppView = CommonView.extend({
   template: $('#box-and-form-tpl'),
-  initialize: function initBoxContainerView () {
+  initialize: function initBoxAppView () {
     this.on('view:rendered', this.onRendered);
   },
   onRendered: function doOnRendered () {
@@ -32,4 +32,4 @@ var BoxContainerView = CommonView.extend({
   }
 });
 
-module.exports = BoxContainerView;
+module.exports = BoxAppView;

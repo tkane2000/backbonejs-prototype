@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var HpView = require('../view/hp-view');
 var AboutView = require('../view/about-view');
-var BoxContainerView = require('../view/box-container-view');
+var BoxAppView = require('../view/box-app-view');
 
 var Colors = require('../model/colors');
 
@@ -19,7 +19,7 @@ var SiteRouter = Backbone.Router.extend({
       console.log('router: color');
       
       // var bvc = (new Backbone.Model(), this.colors); // init
-      this.renderView(BoxContainerView);
+      this.renderView(BoxAppView);
     },
     '': function hpRoute () {
       console.log('router: hp');
