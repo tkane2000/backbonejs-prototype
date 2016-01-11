@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var mustache = require('mustache');
 
 var CommonView = Backbone.View.extend({
   constructor: function CommonViewConstr () {
@@ -13,11 +14,14 @@ var CommonView = Backbone.View.extend({
 
     if(this.template && this.el) {
 
+      console.log('mustache: ' + mustache);
+
       this.$el.html(
-        _.template(
-          this.template.html(), // TODO: expects a jQuery object.  Test and allow string selector as well
-          (this.model ? this.model : {})
-        )
+        mustache.render(this.template.html(), (this.model ? this.model : {}))
+        // _.template(
+        //   this.template.html(), // TODO: expects a jQuery object.  Test and allow string selector as well
+        //   (this.model ? this.model : {})
+        // )
       );
 
       this.trigger('view:rendered', this.el);
