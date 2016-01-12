@@ -5,9 +5,14 @@ var Colors = require('../model/colors');
 var CommonView = require('./common-view');
 var Box = require('./box');
 var AddColorView = require('./add-color');
+var ColorNavView = require('./color-nav-view');
 
 var BoxAppView = CommonView.extend({
   template: $('#box-and-form-tpl'),
+  tagName: 'section',
+  attributes: {
+    'class': 'box-app'
+  },
   initialize: function initBoxAppView () {
     this.on('view:rendered', this.onRendered);
   },
@@ -26,9 +31,12 @@ var BoxAppView = CommonView.extend({
     box.render();
 
     var addColor = new AddColorView(colors); // {el: '#add-color-form-container'}
-
     this.addChild(addColor);
     this.$el.append(addColor.render().el);
+    
+    var colorNav = new ColorNavView(colors, count);
+    this.addChild(colorNav);
+    this.$el.append(colorNav.render().el);
   }
 });
 

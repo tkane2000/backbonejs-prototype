@@ -1,8 +1,9 @@
 var Backbone = require('backbone');
+var CommonView = require('./common-view');
 
 module.exports = function init (count, colors) {
 
-  var Count = Backbone.View.extend({
+  var Count = CommonView.extend({
     
     colorsCollection: colors,
 

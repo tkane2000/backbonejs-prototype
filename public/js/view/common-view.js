@@ -7,14 +7,12 @@ var CommonView = Backbone.View.extend({
     this.children = [];
     Backbone.View.apply(this, arguments);
   },
-  initialize: function initCommonView () {
-    console.log('initCommonView <====');
-  },
+  // initialize: function initCommonView () {
+  //   console.log('initCommonView <====');
+  // },
   render: function renderCommonView () {
 
     if(this.template && this.el) {
-
-      console.log('mustache: ' + mustache);
 
       this.$el.html(
         mustache.render(this.template.html(), (this.model ? this.model : {}))
@@ -34,13 +32,20 @@ var CommonView = Backbone.View.extend({
     }
   },
   destroy: function destroyView () {
-    _.each(this.children, function destroyChildren (childView) {
-      childView.destroy();
-    });
+    console.log('destroy: view id/class: ' + (this.$el.attr('id') || this.$el.attr('class')));
+    this.destroyList(this.children, _.bind(function onDestroyList () {
+      this.children.length = 0;
+    }, this));
 
     if(this.children) console.log('this.children.length: ' + this.children.length);
 
     this.remove();
+  },
+  destroyList: function doDestroyList (viewList, callback) {
+    _.each(viewList, function destroyView (view) {
+      view.destroy();
+    });
+    if(callback) callback();
   },
   addChild: function doAddChild (view) {
     this.children.push(view);

@@ -315,8 +315,28 @@ header nav a {
     color: #fff;
 }
 
+.color-nav {
+    position: absolute;
+    width: 100px;
+    height: 400px;
+    top: 0;
+    right: -120px;
+    background-color: #ccc;
+}
 
+.color-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+}
 
+.color-nav-link {
+    margin: 5px 0;
+}
+
+.box-app {
+    position: relative;
+}
 
 
 

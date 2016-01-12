@@ -32,6 +32,7 @@ var initBox = function init (countModel, colorsCollection) {
 
       // FIXME: tightly coupled to dom: doing this so it will have a class attr...
       this.countView = new CountView({el: this.$el.find('#incr-count')});
+      this.addChild(this.countView);
     },
 
     changeColor: function changeBoxColor (e) {
