@@ -12,7 +12,7 @@ var ColorNavLinkView = CommonView.extend({
   },
   template: $('#color-nav-link-tpl'),
   events: {
-    'click button': 'highlight'
+    'click button': 'onClicked'
   },
   constructor: function colorNavConstr (color, index) {
     this.model = color;
@@ -27,10 +27,11 @@ var ColorNavLinkView = CommonView.extend({
     if(this.$btn && this.$btn.length > 1) throw new Error('The color nav link needs a button element!');
     this.defaultBgColor = this.$btn.css('background-color');
   },
-  highlight: function doChangeColor (event) {
-    console.log('ColorNavLinkView: changeColor');
-    this.$btn.css('background-color', this.model.get('color'));
+  onClicked: function doOnClick (argument) {
     this.trigger('view:color-nav:link-clicked', this);
+  },
+  highlight: function doChangeColor (event) {
+    this.$btn.css('background-color', this.model.get('color'));
   },
   unHighlight: function doUnHighlight () {
     this.$btn.css('background-color', this.defaultBgColor);

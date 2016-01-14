@@ -14,17 +14,35 @@ addColor(colors, 'f00');
 
 function addColor (arr, hex) {
   var fixedHex = hex.indexOf('#') > -1 ? hex : '#' + hex;
-
-  arr.push({
-    id: getId(),
+  var id = getId();
+  var entry = {
+    id: id,
     color: fixedHex
-  });
+  };
+  
+  arr[id] = entry;
+
+  return entry;
 }
 
 function getId () {
   return idCount++;
 }
 
+app.get('/api/v1/colors/:id', function getColors (req, res, next) {
+  var id = req.params.id;
+  
+  console.log('get: /api/v1/colors: id: ' + id);
+
+  res.type( 'json');
+
+  if(colors[id]){
+    res.send(colors[id]);
+  } else {
+    res.status = "404";
+    res.send({error: 'color not found'});
+  }
+});
 
 app.get('/api/v1/colors', function getColors (req, res, next) {
   console.log('get: /api/v1/colors');
@@ -33,9 +51,9 @@ app.get('/api/v1/colors', function getColors (req, res, next) {
 });
 
 app.post('/api/v1/colors', function getColors (req, res, next) {
-  addColor(colors, req.body.color);
+  var record = addColor(colors, req.body.color);
   res.type('json');
-  res.send(colors);
+  res.send(record);
 });
 
 app.get('/*', function getColors (req, res, next) {

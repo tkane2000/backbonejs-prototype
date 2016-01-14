@@ -25,9 +25,9 @@ var AddColorView = CommonView.extend({
     var input = this.$el.find('#color-input');
     this.colorsCollection.create({
       color: '#' + input.val()
-    }, { 
+    }/*, { 
       wait: true 
-    });
+    }*/);
     input.val('');
   }
 });

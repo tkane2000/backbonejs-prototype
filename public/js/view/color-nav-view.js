@@ -54,8 +54,8 @@ var ColorNavView = CommonView.extend({
   onCountChanged: function doOnCountChanged (model) {
     var i = this.countModel.get('count');
     var prevI = this.countModel.previous('count');
-    this.children[i].highlight();
     if(prevI !== null) this.children[prevI].unHighlight();
+    this.children[i].highlight();
   },
   onBtnClicked: function doOnBtnClicked (link) {
     this.countModel.set({count: link.index});
